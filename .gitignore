@@ -1,1 +1,31 @@
+# Environment variables (contains credentials)
+.env
+
+# Session data
+cookies.json
+
+# Storage history
+data/
+*.json
+
+# Build artifacts
+*.exe
+linkin-automator
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Screenshots
+*.png
+*.html
+
+# Technical docs (optional)
 /TECHNICAL_WALKTHROUGH.md
