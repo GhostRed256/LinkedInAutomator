@@ -13,6 +13,32 @@
 
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture) • [Documentation](#-documentation)
 
+---
+
+## 🎥 **Demo Video**
+
+<div align="center">
+
+### Watch LinkinAutomator in Action!
+
+**See all 8+ stealth techniques working together:**
+
+🎬 **Demo video available in:** `demo/linkin-automator-demo.mp4`
+
+*The demo shows:*
+- ✅ Authentication & Session Management
+- ✅ Smart Search with Keyword Targeting  
+- ✅ Bézier Curve Mouse Movement
+- ✅ Human-like Scrolling Patterns
+- ✅ Profile Navigation & Back Button
+- ✅ Connection Request Workflow
+- ✅ Random Delays & Hovering
+- ✅ Debug Logging in Action
+
+📥 **Clone the repo to watch the full demo!**
+
+</div>
+
 </div>
 
 ---
