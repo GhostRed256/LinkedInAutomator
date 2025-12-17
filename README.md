@@ -91,8 +91,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/linkin-automator.git
-cd linkin-automator
+git clone https://github.com/GhostRed256/LinkedInAutomator.git
+cd LinkedInAutomator
 
 # Install dependencies
 go mod download
@@ -282,14 +282,31 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=00ADD8&center=true&vCenter=true&width=600&lines=Built+with+%E2%9D%A4%EF%B8%8F+by+Ritesh+Dey;Software+Engineer+%7C+Go+Developer;LinkedIn+Automation+Expert" alt="Typing SVG" />
 
-### ✨ **Made by [Ritesh Dey](https://github.com/riteshdey)** ❤️ ✨
+### ✨ **Made by [Ritesh Dey](https://github.com/GhostRed256)** ❤️ ✨
 
 <p align="center">
-<a href="https://github.com/riteshdey">
+<a href="https://github.com/GhostRed256">
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
-<a href="https://linkedin.com/in/riteshdey">
+<a href="https://www.linkedin.com/in/ritesh-dey-77887a219">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+</p>
+
+---
+
+### 💖 **Support Me**
+
+<p align="center">
+If you found this project valuable, consider supporting my work!
+</p>
+
+<p align="center">
+<a href="https://github.com/GhostRed256/LinkedInAutomator">
+<img src="https://img.shields.io/badge/Support-Give%20a%20Star%20⭐-yellow?style=for-the-badge"/>
+</a>
+<a href="https://www.linkedin.com/in/ritesh-dey-77887a219">
+<img src="https://img.shields.io/badge/Connect-LinkedIn-0077B5?style=for-the-badge&logo=linkedin"/>
 </a>
 </p>
 
@@ -297,7 +314,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### 🌟 If you found this project helpful, please give it a star! 🌟
 
-<img src="https://img.shields.io/github/stars/yourusername/linkin-automator?style=social" alt="GitHub stars"/>
+<img src="https://img.shields.io/github/stars/GhostRed256/LinkedInAutomator?style=social" alt="GitHub stars"/>
 
 ---
 
