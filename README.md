@@ -21,7 +21,7 @@
 
 ### Watch LinkinAutomator in Action!
 
-[![LinkinAutomator Demo](https://img.youtube.com/vi/OSeYk-unIsQ/0.jpg)](https://youtu.be/OSeYk-unIsQ)
+[![LinkinAutomator Demo](https://img.youtube.com/vi/jRllJtW3NWc/0.jpg)](https://youtu.be/jRllJtW3NWc)
 
 **Click to watch the full demonstration** ▶️
 
