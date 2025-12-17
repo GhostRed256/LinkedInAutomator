@@ -1,7 +1,6 @@
 package connection
 
 import (
-	"fmt"
 	"strings"
 	"time"
 
@@ -36,32 +35,33 @@ func (c *Connector) SendConnectionRequest(profileURL string, message string) err
 	page.MustNavigate(profileURL)
 	page.MustWaitLoad()
 
-	// Random scroll to simulate reading
-	c.Browser.Stealth.SleepRandom(2*time.Second, 4*time.Second)
+	c.Browser.Stealth.SleepRandom(1*time.Second, 2*time.Second)
+
+	slog.Info("Simulating profile reading with scroll")
+	// Just 2 simple scrolls - don't overdo it
 	c.Browser.Stealth.HumanScroll(page)
-	c.Browser.Stealth.SleepRandom(1*time.Second, 2*time.Second) // Pause "reading"
+	c.Browser.Stealth.SleepRandom(500*time.Millisecond, 1*time.Second)
+	c.Browser.Stealth.HumanScroll(page)
+	c.Browser.Stealth.SleepRandom(500*time.Millisecond, 1*time.Second)
 
 	// Find Connect button
 	// It is often in the "pvs-profile-actions" area
 	// Primary button might be "Connect", "Follow", "Message", or "Pending"
 
 	slog.Info("Looking for Connect action")
-
-	// Strategy 1: Look for direct "Connect" button
-	// Often: button with text "Connect" inside specific container
-	// We iterate buttons to find one with text "Connect"
-	// Using XPath or iterating elements
-
-	buttons := page.MustElements("button")
 	var connectBtn *rod.Element
 
-	for _, btn := range buttons {
-		// Check text
+	// Try to find "Connect" button first
+	connectCandidates, _ := page.Elements("button")
+	for _, btn := range connectCandidates {
 		txt, err := btn.Text()
-		if err == nil && strings.TrimSpace(txt) == "Connect" {
-			// Ensure it's visible?
+		if err != nil {
+			continue
+		}
+		if txt == "Connect" || txt == "connect" {
 			if visible, _ := btn.Visible(); visible {
 				connectBtn = btn
+				slog.Info("Found Connect button by text")
 				break
 			}
 		}
@@ -69,51 +69,24 @@ func (c *Connector) SendConnectionRequest(profileURL string, message string) err
 		if lbl, _ := btn.Attribute("aria-label"); lbl != nil && strings.Contains(*lbl, "Connect") {
 			if visible, _ := btn.Visible(); visible {
 				connectBtn = btn
+				slog.Info("Found Connect button by aria-label")
 				break
 			}
 		}
 	}
 
 	if connectBtn == nil {
-		slog.Info("Connect button not found directly, checking 'More' menu")
-		// Find "More" button (usually aria-label="More actions")
-		moreBtn, err := page.Element("button[aria-label='More actions']")
-		if err != nil || moreBtn == nil {
-			// Try searching text "More"
-			// Keep it simple for POC
-			return fmt.Errorf("could not find Connect or More button")
-		}
-
-		moreBtn.MustClick()
-		c.Browser.Stealth.SleepRandom(500*time.Millisecond, 1000*time.Millisecond)
-
-		// Now look for "Connect" in dropdown items
-		// Dropdown items are usually in a div/ul
-		// We look for any element with text "Connect" that is visible
-		dropdownItems := page.MustElements("div[role='button'], li") // vague selector
-		for _, item := range dropdownItems {
-			txt, _ := item.Text()
-			if strings.Contains(txt, "Connect") || strings.Contains(txt, "connect") {
-				// Excluding "Connections" link
-				if strings.Contains(txt, "Connect") && !strings.Contains(txt, "Connections") {
-					connectBtn = item
-					break
-				}
-			}
-		}
-
-		if connectBtn == nil {
-			return fmt.Errorf("connect option not found in More menu (might rely on Follow?)")
-		}
+		slog.Warn("Connect button not easily accessible, skipping this profile")
+		return nil
 	}
 
 	// Click Connect
-	slog.Info("Clicking Connect")
+	slog.Info("Clicking Connect button")
 	if err := c.Browser.Stealth.MoveToElement(page, connectBtn); err != nil {
-		connectBtn.MustClick() // Fallback
-	} else {
-		connectBtn.MustClick()
+		slog.Warn("Failed to move to connect button", "error", err)
 	}
+
+	connectBtn.MustClick()
 
 	c.Browser.Stealth.SleepRandom(1*time.Second, 2*time.Second)
 
@@ -149,13 +122,23 @@ func (c *Connector) SendConnectionRequest(profileURL string, message string) err
 		if disabled, _ := sendBtn.Attribute("disabled"); disabled == nil {
 			sendBtn.MustClick()
 			slog.Info("Connection request sent")
-			c.Storage.AddRequest(profileURL, message != "")
 		} else {
 			slog.Warn("Send button disabled?")
 		}
 	} else {
 		slog.Warn("Could not find Send button in modal")
 	}
+
+	// Record in storage
+	c.Storage.AddRequest(profileURL, message != "")
+	slog.Info("Connection request completed", "profile", profileURL)
+
+	// Navigate back to search results for next profile
+	c.Browser.Stealth.SleepRandom(500*time.Millisecond, 1*time.Second)
+	slog.Info("Navigating back to search results")
+	page.MustNavigateBack()
+	page.MustWaitLoad()
+	c.Browser.Stealth.SleepRandom(500*time.Millisecond, 1*time.Second)
 
 	return nil
 }

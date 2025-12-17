@@ -84,12 +84,12 @@ func main() {
 			b.Stealth.RandomHover(b.Page)
 		}
 
-		if err := connector.SendConnectionRequest(p, "Hi, I'd like to connect!"); err != nil {
+		if err := connector.SendConnectionRequest(p, "Hi! I'm exploring automation in Go and would love to connect with industry professionals. Looking forward to learning from your experience!"); err != nil {
 			slog.Error("Failed to connect", "profile", p, "error", err)
 		}
 
-		// Random delay between requests
-		b.Stealth.SleepRandom(30*time.Second, 60*time.Second)
+		// Random delay between requests (faster for demo)
+		b.Stealth.SleepRandom(5*time.Second, 10*time.Second)
 	}
 
 	// 8. Messaging

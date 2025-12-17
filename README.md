@@ -21,21 +21,11 @@
 
 ### Watch LinkinAutomator in Action!
 
-**See all 8+ stealth techniques working together:**
+[![LinkinAutomator Demo](https://img.youtube.com/vi/OSeYk-unIsQ/0.jpg)](https://youtu.be/OSeYk-unIsQ)
 
-🎬 **Demo video available in:** `demo/linkin-automator-demo.mp4`
+**Click to watch the full demonstration** ▶️
 
-*The demo shows:*
-- ✅ Authentication & Session Management
-- ✅ Smart Search with Keyword Targeting  
-- ✅ Bézier Curve Mouse Movement
-- ✅ Human-like Scrolling Patterns
-- ✅ Profile Navigation & Back Button
-- ✅ Connection Request Workflow
-- ✅ Random Delays & Hovering
-- ✅ Debug Logging in Action
-
-📥 **Clone the repo to watch the full demo!**
+*See all 8+ stealth techniques working together: Authentication, Smart Search, Bézier Mouse Movement, Human-like Scrolling, and more!*
 
 </div>
 
