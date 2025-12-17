@@ -1,0 +1,20 @@
+# LinkinAutomator Configuration
+
+linkedin:
+  username: "" # Override here or use env var
+  password: "" # Override here or use env var
+
+app:
+  headless: false  # Set to true to hide the browser window
+  log_level: "info"
+  data_dir: "./data"
+
+search:
+  # The job title or keyword to search for
+  keywords: "Recruiter"
+  # How many connection requests to send
+  limit: 20
+
+stealth:
+  min_delay: 3
+  max_delay: 8
