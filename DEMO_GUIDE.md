@@ -45,8 +45,8 @@ The demo uses this `.env` configuration:
 
 ```env
 # Credentials
-LINKEDIN_USERNAME=redlio8473@gmail.com
-LINKEDIN_PASSWORD=Tapanism@19
+LINKEDIN_USERNAME=demo.user@example.com
+LINKEDIN_PASSWORD=YourSecurePassword123
 
 # Search for recruiters
 SEARCH_KEYWORDS=Recruiter
